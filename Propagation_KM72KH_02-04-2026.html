@@ -1,0 +1,255 @@
+
+    <!DOCTYPE html><html><head><meta charset="UTF-8"><title>HF_Forecast_KM72KH</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: #0c0c0c; color: #e0e0e0; padding: 30px; font-size: 19px; }
+        .card { background: #1a1a1a; padding: 25px; border-radius: 12px; border: 1px solid #333; }
+        h1 { font-size: 33px; margin-bottom: 20px; text-align: center; }
+        .solar-status { display: flex; gap: 40px; margin-bottom: 20px; padding: 15px; background: #252525; border-radius: 8px; border-left: 5px solid #00e5ff; align-items: center; justify-content: center; }
+        .solar-item { font-size: 19px; color: #aaa; text-align: center; }
+        .solar-val { color: #ffb300; font-weight: bold; font-size: 21px; display: block; }
+        .filter-section { text-align: center; margin-bottom: 25px; padding: 15px; background: #222; border-radius: 8px; }
+        .filter-title { font-weight: bold; color: #00e5ff; margin-right: 15px; font-size: 18px; }
+        .filter-label { margin: 0 10px; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; }
+        .filter-checkbox { transform: scale(1.3); }
+        .tabs { display: flex; gap: 5px; border-bottom: 2px solid #444; margin-top: 20px; }
+        .tab-btn { background: #2a2a2a; color: #888; border: none; padding: 15px 30px; cursor: pointer; border-radius: 8px 8px 0 0; font-weight: bold; font-size: 19px; }
+        .tab-btn.active { background: #00e5ff; color: #000; }
+        .tab-content { display: none; padding-top: 20px; overflow-x: auto; }
+        .tab-content.active { display: block; }
+        table { width: 100%; border-collapse: collapse; text-align: center; font-size: 19px; }
+        th { background: #222; color: #00e5ff; padding: 15px; border-bottom: 2px solid #444; font-size: 20px; }
+        td { padding: 12px; border-bottom: 1px solid #282828; }
+        .gl-row { background: #2d243a !important; }
+        .rel { font-weight: bold; padding: 6px 12px; border-radius: 4px; color: white; display: inline-block; min-width: 50px; }
+        .gl-tag { background: #00e5ff; color: #000; font-size: 14px; padding: 3px 8px; border-radius: 3px; margin-left: 8px; font-weight: bold; }
+        .path-col { color: #00e5ff; font-weight: 500; font-size: 17px; }
+    </style></head><body><div class="card">
+    <h1>HF Propagation Path Analysis: KM72KH</h1>
+    <div class="solar-status">
+        <div class="solar-item">SFI<span class="solar-val">145.0</span></div>
+        <div class="solar-item">SN<span class="solar-val">130</span></div>
+        <div class="solar-item">A-IDX<span class="solar-val">6</span></div>
+        <div class="solar-item">K-IDX<span class="solar-val">1.0</span></div>
+        <div style="border-left: 1px solid #444; height: 40px; margin: 0 20px;"></div>
+        <div style="font-size: 16px; color: #777;">100W | Yagi | Urban</div>
+    </div>
+    <div class="filter-section">
+        <span class="filter-title">Filter by Region:</span>
+        <label class="filter-label"><input type="checkbox" class="filter-checkbox" checked onchange="updateFilters()" data-region="Americas / Oceania"> Americas / Oceania</label><label class="filter-label"><input type="checkbox" class="filter-checkbox" checked onchange="updateFilters()" data-region="Asia / Africa"> Asia / Africa</label><label class="filter-label"><input type="checkbox" class="filter-checkbox" checked onchange="updateFilters()" data-region="Europe"> Europe</label><label class="filter-label"><input type="checkbox" class="filter-checkbox" checked onchange="updateFilters()" data-region="North America"> North America</label>
+    </div>
+    <div class="tabs"><button class="tab-btn active" onclick="openTab(event, 'SSB')">SSB</button><button class="tab-btn " onclick="openTab(event, 'FT8')">FT8</button></div>
+    <div id="SSB" class="tab-content active">
+        <table><thead><tr><th>Time (UTC)</th><th>Sun El.</th><th>10m</th><th>12m</th><th>15m</th><th>17m</th><th>20m</th><th>40m</th><th>Target Path</th></tr></thead>
+        <tbody><tr class="data-row " data-region="Asia / Africa">
+            <td><b>02/04 04:00 UTC</b></td><td>5.7°</td>
+            <td><span class="rel" style="background:#ffc107">40%</span></td><td><span class="rel" style="background:#28a745">98%</span></td><td><span class="rel" style="background:#28a745">94%</span></td><td><span class="rel" style="background:#28a745">90%</span></td><td><span class="rel" style="background:#28a745">79%</span></td><td><span class="rel" style="background:#ffc107">48%</span></td>
+            <td class="path-col">Asia / Africa</td>
+        </tr><tr class="data-row " data-region="Asia / Africa">
+            <td><b>02/04 05:00 UTC</b></td><td>18.4°</td>
+            <td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">94%</span></td><td><span class="rel" style="background:#28a745">90%</span></td><td><span class="rel" style="background:#28a745">87%</span></td><td><span class="rel" style="background:#28a745">77%</span></td><td><span class="rel" style="background:#ffc107">36%</span></td>
+            <td class="path-col">Asia / Africa</td>
+        </tr><tr class="data-row " data-region="Asia / Africa">
+            <td><b>02/04 06:00 UTC</b></td><td>30.9°</td>
+            <td><span class="rel" style="background:#28a745">97%</span></td><td><span class="rel" style="background:#28a745">92%</span></td><td><span class="rel" style="background:#28a745">89%</span></td><td><span class="rel" style="background:#28a745">85%</span></td><td><span class="rel" style="background:#28a745">76%</span></td><td><span class="rel" style="background:#dc3545">24%</span></td>
+            <td class="path-col">Asia / Africa</td>
+        </tr><tr class="data-row " data-region="Asia / Africa">
+            <td><b>02/04 07:00 UTC</b></td><td>42.8°</td>
+            <td><span class="rel" style="background:#28a745">95%</span></td><td><span class="rel" style="background:#28a745">91%</span></td><td><span class="rel" style="background:#28a745">88%</span></td><td><span class="rel" style="background:#28a745">84%</span></td><td><span class="rel" style="background:#28a745">75%</span></td><td><span class="rel" style="background:#dc3545">15%</span></td>
+            <td class="path-col">Asia / Africa</td>
+        </tr><tr class="data-row " data-region="Europe">
+            <td><b>02/04 08:00 UTC</b></td><td>53.2°</td>
+            <td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">94%</span></td><td><span class="rel" style="background:#28a745">91%</span></td><td><span class="rel" style="background:#28a745">87%</span></td><td><span class="rel" style="background:#28a745">77%</span></td><td><span class="rel" style="background:#ffc107">36%</span></td>
+            <td class="path-col">Europe</td>
+        </tr><tr class="data-row " data-region="Europe">
+            <td><b>02/04 09:00 UTC</b></td><td>60.5°</td>
+            <td><span class="rel" style="background:#28a745">98%</span></td><td><span class="rel" style="background:#28a745">93%</span></td><td><span class="rel" style="background:#28a745">89%</span></td><td><span class="rel" style="background:#28a745">86%</span></td><td><span class="rel" style="background:#28a745">76%</span></td><td><span class="rel" style="background:#dc3545">29%</span></td>
+            <td class="path-col">Europe</td>
+        </tr><tr class="data-row " data-region="Europe">
+            <td><b>02/04 10:00 UTC</b></td><td>62.2°</td>
+            <td><span class="rel" style="background:#28a745">97%</span></td><td><span class="rel" style="background:#28a745">92%</span></td><td><span class="rel" style="background:#28a745">89%</span></td><td><span class="rel" style="background:#28a745">85%</span></td><td><span class="rel" style="background:#28a745">76%</span></td><td><span class="rel" style="background:#dc3545">25%</span></td>
+            <td class="path-col">Europe</td>
+        </tr><tr class="data-row " data-region="Europe">
+            <td><b>02/04 11:00 UTC</b></td><td>57.2°</td>
+            <td><span class="rel" style="background:#28a745">97%</span></td><td><span class="rel" style="background:#28a745">92%</span></td><td><span class="rel" style="background:#28a745">89%</span></td><td><span class="rel" style="background:#28a745">85%</span></td><td><span class="rel" style="background:#28a745">76%</span></td><td><span class="rel" style="background:#dc3545">25%</span></td>
+            <td class="path-col">Europe</td>
+        </tr><tr class="data-row " data-region="Europe">
+            <td><b>02/04 12:00 UTC</b></td><td>47.9°</td>
+            <td><span class="rel" style="background:#28a745">97%</span></td><td><span class="rel" style="background:#28a745">93%</span></td><td><span class="rel" style="background:#28a745">89%</span></td><td><span class="rel" style="background:#28a745">86%</span></td><td><span class="rel" style="background:#28a745">76%</span></td><td><span class="rel" style="background:#dc3545">29%</span></td>
+            <td class="path-col">Europe</td>
+        </tr><tr class="data-row " data-region="Europe">
+            <td><b>02/04 13:00 UTC</b></td><td>36.5°</td>
+            <td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">94%</span></td><td><span class="rel" style="background:#28a745">90%</span></td><td><span class="rel" style="background:#28a745">87%</span></td><td><span class="rel" style="background:#28a745">77%</span></td><td><span class="rel" style="background:#ffc107">36%</span></td>
+            <td class="path-col">Europe</td>
+        </tr><tr class="data-row " data-region="Europe">
+            <td><b>02/04 14:00 UTC</b></td><td>24.3°</td>
+            <td><span class="rel" style="background:#ffc107">40%</span></td><td><span class="rel" style="background:#28a745">97%</span></td><td><span class="rel" style="background:#28a745">93%</span></td><td><span class="rel" style="background:#28a745">89%</span></td><td><span class="rel" style="background:#28a745">78%</span></td><td><span class="rel" style="background:#ffc107">44%</span></td>
+            <td class="path-col">Europe</td>
+        </tr><tr class="data-row " data-region="North America">
+            <td><b>02/04 15:00 UTC</b></td><td>11.7°</td>
+            <td><span class="rel" style="background:#28a745">96%</span></td><td><span class="rel" style="background:#28a745">92%</span></td><td><span class="rel" style="background:#28a745">88%</span></td><td><span class="rel" style="background:#28a745">85%</span></td><td><span class="rel" style="background:#28a745">75%</span></td><td><span class="rel" style="background:#dc3545">24%</span></td>
+            <td class="path-col">North America</td>
+        </tr><tr class="data-row gl-row" data-region="North America">
+            <td><b>02/04 16:00 UTC</b></td><td>-1.0°<span class="gl-tag">GRAYLINE</span></td>
+            <td><span class="rel" style="background:#28a745">98%</span></td><td><span class="rel" style="background:#28a745">93%</span></td><td><span class="rel" style="background:#28a745">89%</span></td><td><span class="rel" style="background:#28a745">86%</span></td><td><span class="rel" style="background:#28a745">76%</span></td><td><span class="rel" style="background:#ffc107">50%</span></td>
+            <td class="path-col">North America</td>
+        </tr><tr class="data-row " data-region="North America">
+            <td><b>02/04 17:00 UTC</b></td><td>-13.6°</td>
+            <td><span class="rel" style="background:#ffc107">40%</span></td><td><span class="rel" style="background:#28a745">95%</span></td><td><span class="rel" style="background:#28a745">91%</span></td><td><span class="rel" style="background:#28a745">87%</span></td><td><span class="rel" style="background:#28a745">77%</span></td><td><span class="rel" style="background:#ffc107">39%</span></td>
+            <td class="path-col">North America</td>
+        </tr><tr class="data-row " data-region="North America">
+            <td><b>02/04 18:00 UTC</b></td><td>-25.6°</td>
+            <td><span class="rel" style="background:#ffc107">40%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">95%</span></td><td><span class="rel" style="background:#28a745">90%</span></td><td><span class="rel" style="background:#28a745">80%</span></td><td><span class="rel" style="background:#ffc107">49%</span></td>
+            <td class="path-col">North America</td>
+        </tr><tr class="data-row " data-region="North America">
+            <td><b>02/04 19:00 UTC</b></td><td>-36.7°</td>
+            <td><span class="rel" style="background:#dc3545">20%</span></td><td><span class="rel" style="background:#dc3545">20%</span></td><td><span class="rel" style="background:#ffc107">40%</span></td><td><span class="rel" style="background:#28a745">96%</span></td><td><span class="rel" style="background:#28a745">84%</span></td><td><span class="rel" style="background:#ffc107">61%</span></td>
+            <td class="path-col">North America</td>
+        </tr><tr class="data-row " data-region="North America">
+            <td><b>02/04 20:00 UTC</b></td><td>-46.0°</td>
+            <td><span class="rel" style="background:#dc3545">20%</span></td><td><span class="rel" style="background:#dc3545">20%</span></td><td><span class="rel" style="background:#dc3545">20%</span></td><td><span class="rel" style="background:#dc3545">20%</span></td><td><span class="rel" style="background:#28a745">94%</span></td><td><span class="rel" style="background:#28a745">76%</span></td>
+            <td class="path-col">North America</td>
+        </tr><tr class="data-row " data-region="Americas / Oceania">
+            <td><b>02/04 21:00 UTC</b></td><td>-52.1°</td>
+            <td><span class="rel" style="background:#dc3545">20%</span></td><td><span class="rel" style="background:#dc3545">20%</span></td><td><span class="rel" style="background:#dc3545">20%</span></td><td><span class="rel" style="background:#dc3545">20%</span></td><td><span class="rel" style="background:#dc3545">15%</span></td><td><span class="rel" style="background:#28a745">84%</span></td>
+            <td class="path-col">Americas / Oceania</td>
+        </tr><tr class="data-row " data-region="Americas / Oceania">
+            <td><b>02/04 22:00 UTC</b></td><td>-53.4°</td>
+            <td><span class="rel" style="background:#dc3545">20%</span></td><td><span class="rel" style="background:#dc3545">20%</span></td><td><span class="rel" style="background:#dc3545">20%</span></td><td><span class="rel" style="background:#dc3545">20%</span></td><td><span class="rel" style="background:#dc3545">15%</span></td><td><span class="rel" style="background:#28a745">84%</span></td>
+            <td class="path-col">Americas / Oceania</td>
+        </tr><tr class="data-row " data-region="Americas / Oceania">
+            <td><b>02/04 23:00 UTC</b></td><td>-49.3°</td>
+            <td><span class="rel" style="background:#dc3545">20%</span></td><td><span class="rel" style="background:#dc3545">20%</span></td><td><span class="rel" style="background:#dc3545">20%</span></td><td><span class="rel" style="background:#dc3545">20%</span></td><td><span class="rel" style="background:#dc3545">15%</span></td><td><span class="rel" style="background:#28a745">84%</span></td>
+            <td class="path-col">Americas / Oceania</td>
+        </tr><tr class="data-row " data-region="Americas / Oceania">
+            <td><b>03/04 00:00 UTC</b></td><td>-41.0°</td>
+            <td><span class="rel" style="background:#dc3545">20%</span></td><td><span class="rel" style="background:#dc3545">20%</span></td><td><span class="rel" style="background:#dc3545">20%</span></td><td><span class="rel" style="background:#dc3545">20%</span></td><td><span class="rel" style="background:#dc3545">15%</span></td><td><span class="rel" style="background:#28a745">84%</span></td>
+            <td class="path-col">Americas / Oceania</td>
+        </tr><tr class="data-row " data-region="Americas / Oceania">
+            <td><b>03/04 01:00 UTC</b></td><td>-30.7°</td>
+            <td><span class="rel" style="background:#dc3545">20%</span></td><td><span class="rel" style="background:#dc3545">20%</span></td><td><span class="rel" style="background:#dc3545">20%</span></td><td><span class="rel" style="background:#dc3545">20%</span></td><td><span class="rel" style="background:#dc3545">15%</span></td><td><span class="rel" style="background:#28a745">84%</span></td>
+            <td class="path-col">Americas / Oceania</td>
+        </tr><tr class="data-row " data-region="Americas / Oceania">
+            <td><b>03/04 02:00 UTC</b></td><td>-19.0°</td>
+            <td><span class="rel" style="background:#dc3545">20%</span></td><td><span class="rel" style="background:#dc3545">20%</span></td><td><span class="rel" style="background:#dc3545">20%</span></td><td><span class="rel" style="background:#dc3545">20%</span></td><td><span class="rel" style="background:#dc3545">15%</span></td><td><span class="rel" style="background:#28a745">84%</span></td>
+            <td class="path-col">Americas / Oceania</td>
+        </tr><tr class="data-row gl-row" data-region="Americas / Oceania">
+            <td><b>03/04 03:00 UTC</b></td><td>-6.7°<span class="gl-tag">GRAYLINE</span></td>
+            <td><span class="rel" style="background:#dc3545">20%</span></td><td><span class="rel" style="background:#dc3545">20%</span></td><td><span class="rel" style="background:#dc3545">20%</span></td><td><span class="rel" style="background:#dc3545">20%</span></td><td><span class="rel" style="background:#dc3545">15%</span></td><td><span class="rel" style="background:#28a745">99%</span></td>
+            <td class="path-col">Americas / Oceania</td>
+        </tr><tr class="data-row " data-region="Asia / Africa">
+            <td><b>03/04 04:00 UTC</b></td><td>5.9°</td>
+            <td><span class="rel" style="background:#ffc107">40%</span></td><td><span class="rel" style="background:#28a745">98%</span></td><td><span class="rel" style="background:#28a745">94%</span></td><td><span class="rel" style="background:#28a745">90%</span></td><td><span class="rel" style="background:#28a745">79%</span></td><td><span class="rel" style="background:#ffc107">48%</span></td>
+            <td class="path-col">Asia / Africa</td>
+        </tr></tbody></table></div><div id="FT8" class="tab-content ">
+        <table><thead><tr><th>Time (UTC)</th><th>Sun El.</th><th>10m</th><th>12m</th><th>15m</th><th>17m</th><th>20m</th><th>40m</th><th>Target Path</th></tr></thead>
+        <tbody><tr class="data-row " data-region="Asia / Africa">
+            <td><b>02/04 04:00 UTC</b></td><td>5.7°</td>
+            <td><span class="rel" style="background:#ffc107">68%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">76%</span></td>
+            <td class="path-col">Asia / Africa</td>
+        </tr><tr class="data-row " data-region="Asia / Africa">
+            <td><b>02/04 05:00 UTC</b></td><td>18.4°</td>
+            <td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#ffc107">64%</span></td>
+            <td class="path-col">Asia / Africa</td>
+        </tr><tr class="data-row " data-region="Asia / Africa">
+            <td><b>02/04 06:00 UTC</b></td><td>30.9°</td>
+            <td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#ffc107">52%</span></td>
+            <td class="path-col">Asia / Africa</td>
+        </tr><tr class="data-row " data-region="Asia / Africa">
+            <td><b>02/04 07:00 UTC</b></td><td>42.8°</td>
+            <td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#ffc107">43%</span></td>
+            <td class="path-col">Asia / Africa</td>
+        </tr><tr class="data-row " data-region="Europe">
+            <td><b>02/04 08:00 UTC</b></td><td>53.2°</td>
+            <td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#ffc107">64%</span></td>
+            <td class="path-col">Europe</td>
+        </tr><tr class="data-row " data-region="Europe">
+            <td><b>02/04 09:00 UTC</b></td><td>60.5°</td>
+            <td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#ffc107">57%</span></td>
+            <td class="path-col">Europe</td>
+        </tr><tr class="data-row " data-region="Europe">
+            <td><b>02/04 10:00 UTC</b></td><td>62.2°</td>
+            <td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#ffc107">53%</span></td>
+            <td class="path-col">Europe</td>
+        </tr><tr class="data-row " data-region="Europe">
+            <td><b>02/04 11:00 UTC</b></td><td>57.2°</td>
+            <td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#ffc107">53%</span></td>
+            <td class="path-col">Europe</td>
+        </tr><tr class="data-row " data-region="Europe">
+            <td><b>02/04 12:00 UTC</b></td><td>47.9°</td>
+            <td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#ffc107">57%</span></td>
+            <td class="path-col">Europe</td>
+        </tr><tr class="data-row " data-region="Europe">
+            <td><b>02/04 13:00 UTC</b></td><td>36.5°</td>
+            <td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#ffc107">64%</span></td>
+            <td class="path-col">Europe</td>
+        </tr><tr class="data-row " data-region="Europe">
+            <td><b>02/04 14:00 UTC</b></td><td>24.3°</td>
+            <td><span class="rel" style="background:#ffc107">68%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">72%</span></td>
+            <td class="path-col">Europe</td>
+        </tr><tr class="data-row " data-region="North America">
+            <td><b>02/04 15:00 UTC</b></td><td>11.7°</td>
+            <td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#ffc107">52%</span></td>
+            <td class="path-col">North America</td>
+        </tr><tr class="data-row gl-row" data-region="North America">
+            <td><b>02/04 16:00 UTC</b></td><td>-1.0°<span class="gl-tag">GRAYLINE</span></td>
+            <td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">78%</span></td>
+            <td class="path-col">North America</td>
+        </tr><tr class="data-row " data-region="North America">
+            <td><b>02/04 17:00 UTC</b></td><td>-13.6°</td>
+            <td><span class="rel" style="background:#ffc107">68%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#ffc107">67%</span></td>
+            <td class="path-col">North America</td>
+        </tr><tr class="data-row " data-region="North America">
+            <td><b>02/04 18:00 UTC</b></td><td>-25.6°</td>
+            <td><span class="rel" style="background:#ffc107">68%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">77%</span></td>
+            <td class="path-col">North America</td>
+        </tr><tr class="data-row " data-region="North America">
+            <td><b>02/04 19:00 UTC</b></td><td>-36.7°</td>
+            <td><span class="rel" style="background:#ffc107">48%</span></td><td><span class="rel" style="background:#ffc107">48%</span></td><td><span class="rel" style="background:#ffc107">68%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">89%</span></td>
+            <td class="path-col">North America</td>
+        </tr><tr class="data-row " data-region="North America">
+            <td><b>02/04 20:00 UTC</b></td><td>-46.0°</td>
+            <td><span class="rel" style="background:#ffc107">48%</span></td><td><span class="rel" style="background:#ffc107">48%</span></td><td><span class="rel" style="background:#ffc107">48%</span></td><td><span class="rel" style="background:#ffc107">48%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td>
+            <td class="path-col">North America</td>
+        </tr><tr class="data-row " data-region="Americas / Oceania">
+            <td><b>02/04 21:00 UTC</b></td><td>-52.1°</td>
+            <td><span class="rel" style="background:#ffc107">48%</span></td><td><span class="rel" style="background:#ffc107">48%</span></td><td><span class="rel" style="background:#ffc107">48%</span></td><td><span class="rel" style="background:#ffc107">48%</span></td><td><span class="rel" style="background:#ffc107">43%</span></td><td><span class="rel" style="background:#28a745">99%</span></td>
+            <td class="path-col">Americas / Oceania</td>
+        </tr><tr class="data-row " data-region="Americas / Oceania">
+            <td><b>02/04 22:00 UTC</b></td><td>-53.4°</td>
+            <td><span class="rel" style="background:#ffc107">48%</span></td><td><span class="rel" style="background:#ffc107">48%</span></td><td><span class="rel" style="background:#ffc107">48%</span></td><td><span class="rel" style="background:#ffc107">48%</span></td><td><span class="rel" style="background:#ffc107">43%</span></td><td><span class="rel" style="background:#28a745">99%</span></td>
+            <td class="path-col">Americas / Oceania</td>
+        </tr><tr class="data-row " data-region="Americas / Oceania">
+            <td><b>02/04 23:00 UTC</b></td><td>-49.3°</td>
+            <td><span class="rel" style="background:#ffc107">48%</span></td><td><span class="rel" style="background:#ffc107">48%</span></td><td><span class="rel" style="background:#ffc107">48%</span></td><td><span class="rel" style="background:#ffc107">48%</span></td><td><span class="rel" style="background:#ffc107">43%</span></td><td><span class="rel" style="background:#28a745">99%</span></td>
+            <td class="path-col">Americas / Oceania</td>
+        </tr><tr class="data-row " data-region="Americas / Oceania">
+            <td><b>03/04 00:00 UTC</b></td><td>-41.0°</td>
+            <td><span class="rel" style="background:#ffc107">48%</span></td><td><span class="rel" style="background:#ffc107">48%</span></td><td><span class="rel" style="background:#ffc107">48%</span></td><td><span class="rel" style="background:#ffc107">48%</span></td><td><span class="rel" style="background:#ffc107">43%</span></td><td><span class="rel" style="background:#28a745">99%</span></td>
+            <td class="path-col">Americas / Oceania</td>
+        </tr><tr class="data-row " data-region="Americas / Oceania">
+            <td><b>03/04 01:00 UTC</b></td><td>-30.7°</td>
+            <td><span class="rel" style="background:#ffc107">48%</span></td><td><span class="rel" style="background:#ffc107">48%</span></td><td><span class="rel" style="background:#ffc107">48%</span></td><td><span class="rel" style="background:#ffc107">48%</span></td><td><span class="rel" style="background:#ffc107">43%</span></td><td><span class="rel" style="background:#28a745">99%</span></td>
+            <td class="path-col">Americas / Oceania</td>
+        </tr><tr class="data-row " data-region="Americas / Oceania">
+            <td><b>03/04 02:00 UTC</b></td><td>-19.0°</td>
+            <td><span class="rel" style="background:#ffc107">48%</span></td><td><span class="rel" style="background:#ffc107">48%</span></td><td><span class="rel" style="background:#ffc107">48%</span></td><td><span class="rel" style="background:#ffc107">48%</span></td><td><span class="rel" style="background:#ffc107">43%</span></td><td><span class="rel" style="background:#28a745">99%</span></td>
+            <td class="path-col">Americas / Oceania</td>
+        </tr><tr class="data-row gl-row" data-region="Americas / Oceania">
+            <td><b>03/04 03:00 UTC</b></td><td>-6.7°<span class="gl-tag">GRAYLINE</span></td>
+            <td><span class="rel" style="background:#ffc107">48%</span></td><td><span class="rel" style="background:#ffc107">48%</span></td><td><span class="rel" style="background:#ffc107">48%</span></td><td><span class="rel" style="background:#ffc107">48%</span></td><td><span class="rel" style="background:#ffc107">43%</span></td><td><span class="rel" style="background:#28a745">99%</span></td>
+            <td class="path-col">Americas / Oceania</td>
+        </tr><tr class="data-row " data-region="Asia / Africa">
+            <td><b>03/04 04:00 UTC</b></td><td>5.9°</td>
+            <td><span class="rel" style="background:#ffc107">68%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">99%</span></td><td><span class="rel" style="background:#28a745">76%</span></td>
+            <td class="path-col">Asia / Africa</td>
+        </tr></tbody></table></div>
+    </div><script>
+    function openTab(e,m){var i,tc,tb;tc=document.getElementsByClassName("tab-content");for(i=0;i<tc.length;i++)tc[i].classList.remove("active");tb=document.getElementsByClassName("tab-btn");for(i=0;i<tb.length;i++)tb[i].classList.remove("active");document.getElementById(m).classList.add("active");e.currentTarget.classList.add("active");}
+    function updateFilters() {
+        const checks = document.querySelectorAll('.filter-checkbox');
+        const activeRegions = Array.from(checks).filter(c => c.checked).map(c => c.getAttribute('data-region'));
+        const rows = document.querySelectorAll('.data-row');
+        rows.forEach(row => { row.style.display = activeRegions.includes(row.getAttribute('data-region')) ? '' : 'none'; });
+    }
+    </script></body></html>
+    
