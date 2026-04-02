@@ -97,4 +97,5 @@ The application uses a `config.ini` file for persistent settings. The script rea
    pip install customtkinter requests jinja2 tkcalendar
 
 **73!**
+
 **Author:** Michael (Mike) Spivak (4X5IC)
