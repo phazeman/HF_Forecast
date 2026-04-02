@@ -1,4 +1,4 @@
-# HF Propagation Forecast Generator (v45)
+# HF Propagation Forecast Generator
 
 A professional Python-based desktop application for amateur radio operators. It generates interactive, high-contrast HTML propagation reports by combining real-time solar weather from NOAA with a localized ionospheric engine.
 
