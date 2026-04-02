@@ -1,4 +1,4 @@
-# HF Propagation Forecast Generator (v43)
+# HF Propagation Forecast Generator
 
 A Python-based desktop application that generates highly visual, interactive HTML propagation reports. By combining real-time solar data from NOAA with a custom propagation engine, it provides hams with a localized view of band conditions across multiple modes.
 
