@@ -165,18 +165,21 @@ class VoacapGui(ctk.CTk):
         super().__init__()
         self.title("HF Propagation Forecast Generator")
         
-        # Apply theme from config (read-only from file at startup)
+        # Define Adaptive Colors for Theme Consistency
+        self.accent_color = ("#008FB3", "#00e5ff")  # Darker for light mode, cyan for dark mode
+        self.sub_bg = ("#EBEBEB", "#252525")        # Light gray for light mode, dark gray for dark mode
+        self.inner_bg = ("#DEDEDE", "#1e1e1e")      # Darker inner panels
+
+        # Apply theme from config
         ctk.set_appearance_mode(conf.get('PREFERENCES', 'theme', fallback='Dark'))
         
         self.save_path = ""
-        
-        # UTC Current Times for Defaults
         now_utc = datetime.now(timezone.utc)
         start_def = now_utc.replace(minute=0, second=0, microsecond=0)
         end_def = start_def + timedelta(days=1)
 
         # Header
-        ctk.CTkLabel(self, text="HF Propagation Forecast Generator", font=("Segoe UI", 26, "bold"), text_color="#00e5ff").pack(pady=(20, 10))
+        ctk.CTkLabel(self, text="HF Propagation Forecast Generator", font=("Segoe UI", 26, "bold"), text_color=self.accent_color).pack(pady=(20, 10))
         
         # Station Frame
         f1 = ctk.CTkFrame(self, fg_color="transparent"); f1.pack(pady=5)
@@ -185,7 +188,7 @@ class VoacapGui(ctk.CTk):
         self.loc_m = ctk.CTkOptionMenu(f1, values=["Rural", "Suburban", "Urban"], width=130); self.loc_m.set(conf.get('STATION', 'location_type', fallback='Suburban')); self.loc_m.pack(side="left", padx=5)
         
         # Hardware Frame
-        f2 = ctk.CTkFrame(self, fg_color="#252525"); f2.pack(pady=10, padx=20, fill="x")
+        f2 = ctk.CTkFrame(self, fg_color=self.sub_bg); f2.pack(pady=10, padx=20, fill="x")
         f2_inner = ctk.CTkFrame(f2, fg_color="transparent"); f2_inner.pack(expand=True)
         ctk.CTkLabel(f2_inner, text="Power (W):").grid(row=0, column=0, padx=5, pady=10)
         self.pwr = ctk.CTkEntry(f2_inner, width=60); self.pwr.insert(0, conf.get('STATION', 'power', fallback='100')); self.pwr.grid(row=0, column=1, padx=5)
@@ -194,8 +197,8 @@ class VoacapGui(ctk.CTk):
         ctk.CTkLabel(f2_inner, text="RX Ant:").grid(row=0, column=4, padx=5); self.rx_a = ctk.CTkOptionMenu(f2_inner, values=ants, width=110); self.rx_a.set(conf.get('STATION', 'rx_antenna', fallback='Yagi')); self.rx_a.grid(row=0, column=5, padx=5)
         
         # Band Selection
-        b_frame = ctk.CTkFrame(self, fg_color="#1e1e1e"); b_frame.pack(pady=5, padx=20, fill="x")
-        ctk.CTkLabel(b_frame, text="— HF BANDS —", font=("Segoe UI", 13, "bold"), text_color="#00e5ff").pack(pady=(5, 0))
+        b_frame = ctk.CTkFrame(self, fg_color=self.inner_bg); b_frame.pack(pady=5, padx=20, fill="x")
+        ctk.CTkLabel(b_frame, text="— HF BANDS —", font=("Segoe UI", 13, "bold"), text_color=self.accent_color).pack(pady=(5, 0))
         self.bands = ["6m", "10m", "12m", "15m", "17m", "20m", "30m", "40m", "80m", "160m"]
         active_b = [x.strip() for x in conf.get('PREFERENCES', 'active_bands', fallback='10m, 15m, 20m, 40m').split(',')]
         self.b_vars = {b: ctk.StringVar(value=b if b in active_b else "off") for b in self.bands}
@@ -203,8 +206,8 @@ class VoacapGui(ctk.CTk):
         for i, b in enumerate(self.bands): ctk.CTkCheckBox(bi, text=b, variable=self.b_vars[b], onvalue=b, offvalue="off", width=75).grid(row=i//5, column=i%5, padx=4, pady=2)
         
         # Mode Selection
-        m_frame = ctk.CTkFrame(self, fg_color="#1e1e1e"); m_frame.pack(pady=5, padx=20, fill="x")
-        ctk.CTkLabel(m_frame, text="— MODES —", font=("Segoe UI", 13, "bold"), text_color="#00e5ff").pack(pady=(5, 0))
+        m_frame = ctk.CTkFrame(self, fg_color=self.inner_bg); m_frame.pack(pady=5, padx=20, fill="x")
+        ctk.CTkLabel(m_frame, text="— MODES —", font=("Segoe UI", 13, "bold"), text_color=self.accent_color).pack(pady=(5, 0))
         self.modes = ["SSB", "CW", "WSPR", "FT8", "FT4", "RTTY"]
         active_m = [x.strip() for x in conf.get('PREFERENCES', 'active_modes', fallback='SSB, FT8').split(',')]
         self.m_vars = {m: ctk.StringVar(value=m if m in active_m else "off") for m in self.modes}
@@ -212,7 +215,7 @@ class VoacapGui(ctk.CTk):
         for i, m in enumerate(self.modes): ctk.CTkCheckBox(mi, text=m, variable=self.m_vars[m], onvalue=m, offvalue="off", width=90).grid(row=0, column=i, padx=4)
         
         # Date section (UTC)
-        ctk.CTkLabel(self, text="— DATE/TIME (UTC) —", font=("Segoe UI", 13, "bold"), text_color="#00e5ff").pack(pady=(10, 0))
+        ctk.CTkLabel(self, text="- DATE/TIME (UTC) -", font=("Segoe UI", 13, "bold"), text_color=self.accent_color).pack(pady=(10, 0))
         t_frame = ctk.CTkFrame(self, fg_color="transparent"); t_frame.pack(pady=10)
         self.s_cal = DateEntry(t_frame, width=11, date_pattern='d/m/yyyy'); self.s_cal.set_date(start_def)
         self.s_cal.pack(side="left", padx=5)
@@ -222,7 +225,7 @@ class VoacapGui(ctk.CTk):
         self.e_cal.pack(side="left", padx=5)
         self.e_h = ctk.CTkComboBox(t_frame, values=[f"{i:02d}:00" for i in range(24)], width=85); self.e_h.set(end_def.strftime("%H:00")); self.e_h.pack(side="left")
         
-        self.path_btn = ctk.CTkButton(self, text="📁 Set Save Location", command=self.select_path, fg_color="#333", height=35); self.path_btn.pack(pady=(15, 10), padx=40, fill="x")
+        self.path_btn = ctk.CTkButton(self, text="📁 Set Save Location", command=self.select_path, fg_color=("#555", "#333"), height=35); self.path_btn.pack(pady=(15, 10), padx=40, fill="x")
         self.btn = ctk.CTkButton(self, text="🚀 GENERATE REPORT", command=self.run, fg_color="#28a745", font=("Segoe UI", 15, "bold"), height=50); self.btn.pack(pady=(0, 20), padx=40, fill="x")
 
     def select_path(self):
