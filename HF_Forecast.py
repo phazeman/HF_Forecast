@@ -11,21 +11,25 @@ from tkcalendar import DateEntry
 # --- CONFIGURATION ---
 CONFIG_FILE = "config.ini"
 
-def create_default_config():
+def load_config():
     config = configparser.ConfigParser(allow_no_value=True)
-    config.add_section('STATION')
-    config.set('STATION', 'origin_grid', 'KM72KH')
-    config.set('STATION', 'power', '100')
-    config.set('STATION', 'tx_antenna', 'Yagi')
-    config.set('STATION', 'rx_antenna', 'Yagi')
-    config.set('STATION', 'location_type', 'Suburban')
-    config.add_section('PREFERENCES')
-    config.set('PREFERENCES', 'active_bands', '10m, 12m, 15m, 17m, 20m, 40m')
-    config.set('PREFERENCES', 'active_modes', 'SSB, FT8')
-    with open(CONFIG_FILE, 'w') as f: config.write(f)
+    if not os.path.exists(CONFIG_FILE):
+        config.add_section('STATION')
+        config.set('STATION', 'origin_grid', 'KM72KH')
+        config.set('STATION', 'power', '100')
+        config.set('STATION', 'tx_antenna', 'Yagi')
+        config.set('STATION', 'rx_antenna', 'Yagi')
+        config.set('STATION', 'location_type', 'Suburban')
+        config.add_section('PREFERENCES')
+        config.set('PREFERENCES', 'active_bands', '10m, 12m, 15m, 17m, 20m, 40m')
+        config.set('PREFERENCES', 'active_modes', 'SSB, FT8')
+        config.set('PREFERENCES', 'theme', 'Dark')
+        with open(CONFIG_FILE, 'w') as f: config.write(f)
+    else:
+        config.read(CONFIG_FILE)
+    return config
 
-if not os.path.exists(CONFIG_FILE): create_default_config()
-conf = configparser.ConfigParser(); conf.read(CONFIG_FILE)
+conf = load_config()
 
 # --- ENGINE LOGIC ---
 def get_sun_elevation(lat, lon, dt_utc):
@@ -160,7 +164,10 @@ class VoacapGui(ctk.CTk):
     def __init__(self):
         super().__init__()
         self.title("HF Propagation Forecast Generator")
-        ctk.set_appearance_mode("dark")
+        
+        # Apply theme from config (read-only from file at startup)
+        ctk.set_appearance_mode(conf.get('PREFERENCES', 'theme', fallback='Dark'))
+        
         self.save_path = ""
         
         # UTC Current Times for Defaults
@@ -168,6 +175,7 @@ class VoacapGui(ctk.CTk):
         start_def = now_utc.replace(minute=0, second=0, microsecond=0)
         end_def = start_def + timedelta(days=1)
 
+        # Header
         ctk.CTkLabel(self, text="HF Propagation Forecast Generator", font=("Segoe UI", 26, "bold"), text_color="#00e5ff").pack(pady=(20, 10))
         
         # Station Frame
