@@ -4,13 +4,33 @@ A professional Python-based desktop application for amateur radio operators. It 
 
 ## 🚀 Key Features
 
-* **Live NOAA Integration**: Fetches real-time SFI, Sunspot Number, and K-Index directly from the Space Weather Prediction Center.
-* **Localized Path Analysis**: Calculates Sun Elevation and Grayline status based on your specific Maidenhead Gridsquare.
-* **Mode-Specific Reliability**: Tabbed HTML reports for **SSB, CW, WSPR, FT8, FT4, and RTTY**.
-* **Station Modeling**: Simulates signal performance based on power, antenna gain, and local noise floor.
-* **Interactive Filtering**: Toggle regional paths (e.g., Europe, North America, Oceania) directly within the generated report.
+* **Live NOAA Integration**: Fetches real-time SFI, SN, and K-Index from the SWPC.
+* **Localized Path Analysis**: Calculates Sun Elevation and Grayline status based on your Maidenhead Gridsquare.
+* **Mode-Specific Reliability**: Separate analysis for **SSB, CW, WSPR, FT8, FT4, and RTTY**.
+* **Automation Mode**: Run headless reports via Command Line for scheduled tasks.
+* **Adaptive UI**: High-contrast interface compatible with both **Light** and **Dark** desktop themes.
 
 ---
+
+## 🤖 Automation & CLI Usage
+
+You can run the script directly from the Command Prompt (CMD) or terminal without opening the GUI. This mode uses your `config.ini` settings and automatically generates a 24-hour forecast starting from the current UTC time.
+
+### Basic Auto-Run
+Generates a report using default naming: `Propagation_[GRID]_[DATE]_AUTO.html`
+```bash
+python hf_forecast.py auto
+
+---
+
+Custom File Output
+Direct the report to a specific folder or filename using the file= parameter:
+
+  python hf_forecast.py auto file="C:\Reports\Daily_HF_Report.html"
+  Note: Use double quotes if your file path contains spaces.
+
+---
+
 
 ## ⚙️ Services Involved
 
