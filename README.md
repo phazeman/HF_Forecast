@@ -81,5 +81,5 @@ The final reliability score is adjusted by your hardware configuration:
     python hf_forecast.py
 
 
-73!
-Author: Michael (Mike) Spivak (4X5IC)
+**73!**
+**Author: Michael (Mike) Spivak (4X5IC)**
