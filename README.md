@@ -28,7 +28,9 @@ Direct the report to a specific folder or filename using the file= parameter:
 ```
     python hf_forecast.py auto file="C:\Reports\Daily_HF_Report.html"
 ```
+
 Note: Use double quotes if your file path contains spaces.
+
 ---
 
 
