@@ -18,17 +18,18 @@ You can run the script directly from the Command Prompt (CMD) or terminal withou
 
 ### Basic Auto-Run
 Generates a report using default naming: `Propagation_[GRID]_[DATE]_AUTO.html`
-```bash
-python hf_forecast.py auto
-
+---
+bash
+  python hf_forecast.py auto
 ---
 
-Custom File Output
+
+### Custom File Output
 Direct the report to a specific folder or filename using the file= parameter:
-
+```
   python hf_forecast.py auto file="C:\Reports\Daily_HF_Report.html"
-  Note: Use double quotes if your file path contains spaces.
-
+```
+Note: Use double quotes if your file path contains spaces.
 ---
 
 
