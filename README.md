@@ -17,10 +17,11 @@ A professional Python-based desktop application for amateur radio operators. It 
 You can run the script directly from the Command Prompt (CMD) or terminal without opening the GUI. This mode uses your `config.ini` settings and automatically generates a 24-hour forecast starting from the current UTC time.
 
 ### Basic Auto-Run
+
 Generates a report using default naming: `Propagation_[GRID]_[DATE]_AUTO.html`
----
-bash
+
   python hf_forecast.py auto
+
 ---
 
 
